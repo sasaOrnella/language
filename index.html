@@ -1,31 +1,947 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>听见更大的世界 · 12周听力手账</title><style>
-:root{--bg:#f4f3ed;--paper:#fffef9;--ink:#203c37;--muted:#71807a;--green:#296754;--line:#dce2d8;--gold:#edc875}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,"Microsoft YaHei",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);padding:9px 14px}button:hover{border-color:var(--green)}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold)}.primary{background:var(--green);color:white}.wrap{max-width:1220px;margin:auto;padding:32px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-size:12px;letter-spacing:3px;color:var(--green)}h1{font-size:38px;letter-spacing:-1px;line-height:1.25;margin:14px 0}h2{font-size:21px;margin:0 0 12px}h3{font-size:16px;margin:0}.muted,small{color:var(--muted)}.tools{display:flex;gap:8px;flex-wrap:wrap}.hero{margin:26px 0;background:var(--ink);color:#fffef5;border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:24px}.hero p{margin:5px 0;color:#cfdbd4}.hero strong{font-size:36px;color:var(--gold)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}.stat,.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}.stat b{display:block;font-size:27px}.layout{display:grid;grid-template-columns:300px 1fr;gap:22px}.panel{margin-bottom:20px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{padding:7px 0;font-size:12px;border-radius:7px}.day.done{background:#d9e9dd}.day.partial{background:#f6e9c8}.day.selected{outline:2px solid var(--green);outline-offset:0}.week-label{font-size:12px;color:var(--muted);margin:12px 0 4px}.heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.date{font-size:14px}.progress{height:7px;background:#e6eae1;border-radius:9px;overflow:hidden;margin:12px 0}.progress>i{display:block;height:100%;background:var(--green)}.task{border-top:1px solid var(--line);padding:17px 0}.task-head{display:flex;align-items:flex-start;gap:12px}.task-head input{width:21px;height:21px;accent-color:var(--green);flex-shrink:0;margin-top:3px}.task-head label{flex:1;font-weight:650;cursor:pointer}.minutes{background:#edf1e8;border-radius:20px;font-size:12px;padding:3px 10px;white-space:nowrap}.task p{font-size:13px;color:var(--muted);margin:6px 0 12px 33px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-left:33px}input[type=text],input[type=url],input[type=date],input[type=number],textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 10px;background:white;color:var(--ink)}textarea{resize:vertical;min-height:90px}label.field{display:block;font-size:13px;color:var(--muted)}label.field>input,label.field>textarea{margin-top:5px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chips label{background:#edf1e8;border-radius:8px;padding:6px 10px;font-size:13px}.chips input{accent-color:var(--green)}.section{border-top:1px solid var(--line);padding-top:20px;margin-top:8px}.phase{border-left:3px solid var(--gold);padding-left:12px;margin:18px 0}.phase textarea{font-size:13px;min-height:74px;margin-top:8px}.checkpoints{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.checkpoint{border:1px solid var(--line);padding:14px;border-radius:12px}.checkpoint input{margin-top:7px}.checkpoint textarea{margin-top:7px;font-size:12px;min-height:65px}.chart{height:110px;display:flex;align-items:flex-end;gap:16px;padding:10px 5px 0;margin-bottom:30px}.bar{flex:1;background:#e7ece3;height:100%;position:relative;border-radius:6px 6px 0 0}.bar i{position:absolute;bottom:0;width:100%;background:#79a18a;border-radius:6px 6px 0 0}.bar span{position:absolute;bottom:-25px;left:0;width:100%;text-align:center;font-size:11px}.bar b{position:absolute;top:5px;width:100%;text-align:center;font-size:11px;z-index:1}a{color:var(--green)}footer{font-size:12px;color:var(--muted);margin:25px 0}#status{font-size:12px;color:var(--green)}.danger{color:#a34d3f}details summary{cursor:pointer} @media(max-width:850px){.wrap{padding:18px}.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start;flex-direction:column}.hero{padding:22px}h1{font-size:30px}.checkpoints{grid-template-columns:repeat(2,1fr)}.calendar{gap:6px}.day{padding:10px}.fields{grid-template-columns:1fr}.hero strong{font-size:28px}}@media(max-width:420px){.checkpoints{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.heading{flex-wrap:wrap}}
-</style></head><body><div class="wrap"><header><div><div class="brand">LISTEN · UNDERSTAND · CONNECT</div><h1>听见更大的世界</h1><div class="muted">12 周英语听力手账 / 每天 120 分钟 / 为真实课堂与生活做准备</div></div><div class="tools"><button id="export">导出备份</button><button id="import">导入 JSON</button><input id="file" type="file" accept="application/json,.json" hidden><button id="reset" class="danger">重置</button></div></header>
-<section class="hero"><div><h2>把听不懂的地方，变成明天的进步。</h2><p>先盲听，再精听；纠错之后跟读，最后用自己的话说出来。</p></div><div><strong>120</strong> 分钟 / 天<br><span>84 天，累计 168 小时</span></div></section>
-<div class="stats"><div class="stat"><small>完整完成</small><b id="daysStat">0 / 84 天</b></div><div class="stat"><small>已勾选训练时长</small><b id="timeStat">0 小时</b></div><div class="stat"><small>整体训练进度</small><b id="percentStat">0%</b></div><div class="stat"><small>最近一次盲听理解率</small><b id="rateStat">尚未记录</b></div></div>
-<div class="layout"><aside><section class="panel"><h2>我的 84 天</h2><label class="field">计划开始日期<input type="date" id="start"></label><p class="muted" style="font-size:12px">更改开始日期会整体平移日期，记录仍按第几天保留。</p><div class="tools"><button id="today">跳到今天</button><button id="nextTodo">首个未完成日</button></div><div id="calendar"></div><p class="muted" style="font-size:12px">浅绿：完成 · 浅金：部分完成 · 边框：当前选择</p></section><section class="panel"><h2>12 周阶段目标</h2><small>以下为可编辑的建议目标。关注自己的变化，不设保证达成的分数线。</small><div id="phases"></div></section></aside>
-<main><section class="panel"><div class="heading"><div><small id="weekTitle"></small><h2 id="dayTitle" style="margin:3px 0"></h2><span class="date" id="dateTitle"></span></div><div class="tools"><button id="prev" aria-label="前一天">←</button><button id="next" aria-label="后一天">→</button></div></div><div id="dailySummary"></div><div class="progress"><i id="dailyBar"></i></div><div id="tasks"></div><div class="section"><h3>听写问题分类</h3><small>勾选今天遇到的问题，在笔记中留下例句和正确读法。</small><div id="issues" class="chips"></div><label class="field">今日笔记 / 错句 / 新词 / 明日调整<textarea id="notes" placeholder="例如：知道这个词，但连读时没有辨认出来；记录音频时间点及纠正后的表达。"></textarea></label></div></section>
-<section class="panel"><h2>每两周 · 首次盲听检查</h2><p class="muted">第 2、4、6、8、10、12 周末，各用一段<strong>从未听过</strong>的同类材料。只听一遍、不看字幕，用同一标准记录理解率：听懂的关键信息点 ÷ 总关键信息点 × 100%。记录后再核对文本。材料难度尽量接近；这不是标准化考试分数。</p><div class="chart" id="chart" aria-label="盲听理解率图表"></div><div class="checkpoints" id="checkpoints"></div></section>
-<section class="panel"><details><summary>训练方法与使用说明</summary><p>45 分钟听写是训练时长，不要求在一天内逐字听写整期约 20 分钟节目。选一小段：先盲听抓主旨，再分句暂停、重复、写下听到的内容；听不出的地方标记时间点。</p><p>纠错时区分“不认识词”和“认识但听不出”，核对文本后回听。跟读同一小段，关注重音、弱读、连读与语调。课堂/对话材料先听结构与信息点，复述尽量脱稿。五项完成后再勾选；统计按该项完整时长计算。</p><p>可在素材栏粘贴你已选好的节目或课堂链接；页面只接受 http/https 链接。记录保存在当前浏览器、当前文件地址的 localStorage 中；移动文件、换浏览器或清理浏览数据可能使记录不可见。请定期导出 JSON。导入会完整替换现有记录，系统会先询问确认。</p></details></section></main></div><footer><span id="status" role="status" aria-live="polite">正在准备本地记录…</span><br>你的记录留在这台设备上。本页无外部依赖，可离线使用。</footer></div>
-<script>
-'use strict';
-const KEY='listening-journal-v1',MIN=[45,20,20,25,10],NAMES=['The Intelligence 听写','纠错与回听','跟读与模仿','大学课堂 / 自然对话','英语复述'],TIPS=['选取可消化的片段，先盲听，再分句听写；不必逐字完成整期。','核对文本，找出漏听原因，再关掉文本重听。','使用今天的精听片段，模仿重音、弱读、连读和语调。','先不看字幕，记录主旨、结构与关键信息；兼顾课堂和日常交流。','脱稿概括今天内容，尽量用英语说满 10 分钟，可录音回看。'],ISSUES=['生词 / 短语','连读 / 弱读','语音辨识','语速 / 切分','语法结构','背景知识','注意力 / 工作记忆'],GOALS=['第 1—2 周｜建立流程：缩短听写片段，找出主要漏听原因，形成每日记录习惯。','第 3—4 周｜提升辨音：集中回听高频错句，逐步识别连读、弱读和重音。','第 5—6 周｜抓住结构：听出主旨、转折与论据，能用英语概括核心信息。','第 7—8 周｜适应课堂：练习边听边记提纲，接触自然对话中的停顿与口音。','第 9—10 周｜拓宽迁移：接触不同说话者和学科，减少对字幕与逐词翻译的依赖。','第 11—12 周｜模拟留学：连贯听课、整理笔记并口头复述，复盘下一阶段重点。'];
-const $=id=>document.getElementById(id);let selected=0,storageOK=true;
-function dateStr(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function blank(){return {version:1,start:dateStr(new Date()),days:Array.from({length:84},()=>({done:[false,false,false,false,false],materials:Array.from({length:5},()=>({name:'',url:''})),issues:[],notes:''})),phases:[...GOALS],checks:Array.from({length:6},()=>({date:'',rate:'',name:'',url:'',notes:''}))}}
-function validDate(x){if(typeof x!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(x))return false;let d=new Date(x+'T12:00:00');return !isNaN(d)&&dateStr(d)===x}
-function validate(s){const str=x=>typeof x==='string',mat=m=>m&&str(m.name)&&str(m.url);if(!s||s.version!==1||!validDate(s.start)||!Array.isArray(s.days)||s.days.length!==84||!Array.isArray(s.phases)||s.phases.length!==6||!s.phases.every(str)||!Array.isArray(s.checks)||s.checks.length!==6)throw Error('备份结构或版本不正确');if(!s.days.every(d=>d&&Array.isArray(d.done)&&d.done.length===5&&d.done.every(x=>typeof x==='boolean')&&Array.isArray(d.materials)&&d.materials.length===5&&d.materials.every(mat)&&Array.isArray(d.issues)&&d.issues.every(x=>ISSUES.includes(x))&&str(d.notes)))throw Error('每日记录格式不正确');if(!s.checks.every(c=>c&&str(c.date)&&(c.date===''||validDate(c.date))&&(c.rate===''||(typeof c.rate==='number'&&Number.isFinite(c.rate)&&c.rate>=0&&c.rate<=100))&&mat(c)&&str(c.notes)))throw Error('盲听记录格式不正确');return s}
-let state=blank();try{let raw=localStorage.getItem(KEY);if(raw)state=validate(JSON.parse(raw))}catch(e){storageOK=false;$('status').textContent='无法读取本地记录：'+e.message+'。可导出当前记录；重置前请保留原备份。'}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));storageOK=true;$('status').textContent='已自动保存 · '+new Date().toLocaleTimeString('zh-CN')}catch(e){storageOK=false;$('status').textContent='自动保存失败（浏览器限制或空间不足），请立即导出 JSON 备份。'}}
-function dayDate(i){let d=new Date(state.start+'T12:00:00');d.setDate(d.getDate()+i);return d}function minutes(d){return d.done.reduce((a,x,i)=>a+(x?MIN[i]:0),0)}
-function link(url,el){el.replaceChildren();try{let u=new URL(url);if(!['https:','http:'].includes(u.protocol))return;let a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent='打开素材 ↗';el.append(a)}catch{}}
-function field(label,value,type,fn){let l=document.createElement('label');l.className='field';l.textContent=label;let e=document.createElement(type==='textarea'?'textarea':'input');if(type!=='textarea')e.type=type;e.value=value;l.append(e);e.addEventListener('input',()=>fn(e.value,e));return [l,e]}
-function stats(){let count=state.days.filter(d=>d.done.every(Boolean)).length,total=state.days.reduce((s,d)=>s+minutes(d),0);$('daysStat').textContent=count+' / 84 天';$('timeStat').textContent=(total/60).toFixed(1)+' 小时';$('percentStat').textContent=Math.round(total/10080*100)+'%';let recent=state.checks.map((c,i)=>({...c,i})).filter(c=>c.rate!=='').sort((a,b)=>(a.date||dateStr(dayDate((a.i+1)*14-1))).localeCompare(b.date||dateStr(dayDate((b.i+1)*14-1))));$('rateStat').textContent=recent.length?recent.at(-1).rate+'%':'尚未记录';$('calendar').replaceChildren();for(let w=0;w<12;w++){let label=document.createElement('div');label.className='week-label';label.textContent='WEEK '+String(w+1).padStart(2,'0');$('calendar').append(label);let grid=document.createElement('div');grid.className='calendar';for(let j=0;j<7;j++){let i=w*7+j,b=document.createElement('button'),m=minutes(state.days[i]);b.className='day'+(m===120?' done':m?' partial':'')+(i===selected?' selected':'');b.textContent=i+1;b.title=dateStr(dayDate(i))+' · '+m+'/120 分钟';b.setAttribute('aria-label','第 '+(i+1)+' 天，'+b.title);b.setAttribute('aria-pressed',String(i===selected));b.onclick=()=>{selected=i;renderDay();stats()};grid.append(b)}$('calendar').append(grid)}let m=minutes(state.days[selected]);$('dailySummary').textContent='今日已完成 '+state.days[selected].done.filter(Boolean).length+' / 5 项 · '+m+' / 120 分钟';$('dailyBar').style.width=(m/120*100)+'%'}
-function renderDay(){let d=state.days[selected];$('weekTitle').textContent='WEEK '+(Math.floor(selected/7)+1)+' · DAY '+(selected%7+1);$('dayTitle').textContent='第 '+(selected+1)+' 天的练习';$('dateTitle').textContent=dayDate(selected).toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});$('prev').disabled=selected===0;$('next').disabled=selected===83;$('tasks').replaceChildren();NAMES.forEach((name,i)=>{let box=document.createElement('div');box.className='task';let head=document.createElement('div');head.className='task-head';let cb=document.createElement('input');cb.type='checkbox';cb.id='task'+i;cb.checked=d.done[i];cb.onchange=()=>{d.done[i]=cb.checked;save();stats()};let lab=document.createElement('label');lab.htmlFor=cb.id;lab.textContent=name;let min=document.createElement('span');min.className='minutes';min.textContent=MIN[i]+' 分钟';head.append(cb,lab,min);let p=document.createElement('p');p.textContent=TIPS[i];let fs=document.createElement('div');fs.className='fields';let open=document.createElement('small');let [nf]=field('素材名称 / 片段时间',d.materials[i].name,'text',v=>{d.materials[i].name=v;save()});let [uf]=field('素材链接（可选）',d.materials[i].url,'url',v=>{d.materials[i].url=v;link(v,open);save()});link(d.materials[i].url,open);fs.append(nf,uf,open);box.append(head,p,fs);$('tasks').append(box)});$('issues').replaceChildren();ISSUES.forEach(name=>{let l=document.createElement('label'),c=document.createElement('input');c.type='checkbox';c.checked=d.issues.includes(name);c.onchange=()=>{d.issues=c.checked?[...d.issues,name]:d.issues.filter(x=>x!==name);save()};l.append(c,document.createTextNode(' '+name));$('issues').append(l)});$('notes').value=d.notes;stats()}
-function chart(){$('chart').replaceChildren();state.checks.forEach((c,i)=>{let bar=document.createElement('div');bar.className='bar';let fill=document.createElement('i');fill.style.height=(c.rate===''?0:c.rate)+'%';let val=document.createElement('b');val.textContent=c.rate===''?'—':c.rate+'%';let label=document.createElement('span');label.textContent='第 '+((i+1)*2)+' 周';bar.append(fill,val,label);$('chart').append(bar)});stats()}
-function renderExtras(){$('start').value=state.start;$('phases').replaceChildren();state.phases.forEach((v,i)=>{let p=document.createElement('div');p.className='phase';let [f]=field('阶段 '+(i+1),v,'textarea',v=>{state.phases[i]=v;save()});p.append(f);$('phases').append(p)});$('checkpoints').replaceChildren();state.checks.forEach((c,i)=>{let box=document.createElement('div');box.className='checkpoint';let h=document.createElement('h3');h.textContent='第 '+((i+1)*2)+' 周末';let small=document.createElement('small');small.textContent='计划 '+dateStr(dayDate((i+1)*14-1));box.append(h,small);[['测试日期','date','date'],['首次理解率（0—100%）','rate','number'],['全新素材名称','name','text'],['素材链接','url','url'],['关键信息点 / 测试备注','notes','textarea']].forEach(([label,k,type])=>{let [f,e]=field(label,c[k],type,(v,input)=>{if(k==='rate'){if(v!==''&&(!Number.isFinite(Number(v))||Number(v)<0||Number(v)>100)){input.setCustomValidity('请输入 0 到 100');input.reportValidity();return}input.setCustomValidity('');c[k]=v===''?'':Number(v);chart()}else{c[k]=v;if(k==='url')link(v,open)}save()});if(k==='rate'){e.min=0;e.max=100;e.step='any'}box.append(f)});let open=document.createElement('small');link(c.url,open);box.append(open);$('checkpoints').append(box)});chart()}
-$('notes').oninput=()=>{state.days[selected].notes=$('notes').value;save()};$('start').onchange=()=>{if(!validDate($('start').value)){$('start').value=state.start;return}state.start=$('start').value;save();renderDay();renderExtras()};$('prev').onclick=()=>{if(selected>0){selected--;renderDay()}};$('next').onclick=()=>{if(selected<83){selected++;renderDay()}};$('today').onclick=()=>{let today=dateStr(new Date()),i=state.days.findIndex((_,i)=>dateStr(dayDate(i))===today);if(i<0){alert('今天不在计划日期范围内，可调整开始日期。');return}selected=i;renderDay()};$('nextTodo').onclick=()=>{let i=state.days.findIndex(d=>!d.done.every(Boolean));if(i<0){alert('84 天已经全部完成！');return}selected=i;renderDay()};
-$('export').onclick=()=>{let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='英语听力备份-'+dateStr(new Date())+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)};$('import').onclick=()=>$('file').click();$('file').onchange=async()=>{let f=$('file').files[0];if(!f)return;try{if(f.size>10000000)throw Error('文件过大，请使用本页导出的 JSON 备份');let parsed=validate(JSON.parse(await f.text()));if(!confirm('导入将替换所有现有记录。建议先导出当前备份。确认导入？'))return;state=parsed;selected=0;save();renderDay();renderExtras();alert(storageOK?'备份已导入并保存。':'备份已导入，但本地保存失败，请导出保留。')}catch(e){alert('导入失败：'+e.message+'。原有记录未更改。')}finally{$('file').value=''}};$('reset').onclick=()=>{if(!confirm('重置将清空全部 84 天记录、盲听检查和自定义目标。建议先导出备份。确认继续？'))return;if(prompt('请输入“重置”以确认清空：')!=='重置')return;state=blank();selected=0;save();renderDay();renderExtras()};renderDay();renderExtras();if(storageOK)$('status').textContent='本地记录已就绪 · 修改后自动保存';
-</script></body></html>
+<html lang="zh-CN">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sparrow</title>
+  <style>
+    :root {
+      --bg: #f4f3ed;
+      --paper: #fffef9;
+      --ink: #203c37;
+      --muted: #71807a;
+      --green: #296754;
+      --line: #dce2d8;
+      --gold: #edc875
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.65 system-ui, "Microsoft YaHei", sans-serif
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 9px 14px
+    }
+
+    button:hover {
+      border-color: var(--green)
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--gold)
+    }
+
+    .primary {
+      background: var(--green);
+      color: white
+    }
+
+    .wrap {
+      max-width: 1220px;
+      margin: auto;
+      padding: 32px
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px
+    }
+
+    .brand {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--green)
+    }
+
+    h1 {
+      font-size: 38px;
+      letter-spacing: -1px;
+      line-height: 1.25;
+      margin: 14px 0
+    }
+
+    h2 {
+      font-size: 21px;
+      margin: 0 0 12px
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 0
+    }
+
+    .muted,
+    small {
+      color: var(--muted)
+    }
+
+    .tools {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .hero {
+      margin: 26px 0;
+      background: var(--ink);
+      color: #fffef5;
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px
+    }
+
+    .hero p {
+      margin: 5px 0;
+      color: #cfdbd4
+    }
+
+    .hero strong {
+      font-size: 36px;
+      color: var(--gold)
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 26px
+    }
+
+    .stat,
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px
+    }
+
+    .stat b {
+      display: block;
+      font-size: 27px
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 22px
+    }
+
+    .panel {
+      margin-bottom: 20px
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px
+    }
+
+    .day {
+      padding: 7px 0;
+      font-size: 12px;
+      border-radius: 7px
+    }
+
+    .day.done {
+      background: #d9e9dd
+    }
+
+    .day.partial {
+      background: #f6e9c8
+    }
+
+    .day.selected {
+      outline: 2px solid var(--green);
+      outline-offset: 0
+    }
+
+    .week-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 12px 0 4px
+    }
+
+    .heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px
+    }
+
+    .date {
+      font-size: 14px
+    }
+
+    .progress {
+      height: 7px;
+      background: #e6eae1;
+      border-radius: 9px;
+      overflow: hidden;
+      margin: 12px 0
+    }
+
+    .progress>i {
+      display: block;
+      height: 100%;
+      background: var(--green)
+    }
+
+    .task {
+      border-top: 1px solid var(--line);
+      padding: 17px 0
+    }
+
+    .task-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px
+    }
+
+    .task-head input {
+      width: 21px;
+      height: 21px;
+      accent-color: var(--green);
+      flex-shrink: 0;
+      margin-top: 3px
+    }
+
+    .task-head label {
+      flex: 1;
+      font-weight: 650;
+      cursor: pointer
+    }
+
+    .minutes {
+      background: #edf1e8;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 10px;
+      white-space: nowrap
+    }
+
+    .task p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 6px 0 12px 33px
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-left: 33px
+    }
+
+    input[type=text],
+    input[type=url],
+    input[type=date],
+    input[type=number],
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 10px;
+      background: white;
+      color: var(--ink)
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px
+    }
+
+    label.field {
+      display: block;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    label.field>input,
+    label.field>textarea {
+      margin-top: 5px
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0
+    }
+
+    .chips label {
+      background: #edf1e8;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 13px
+    }
+
+    .chips input {
+      accent-color: var(--green)
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      margin-top: 8px
+    }
+
+    .phase {
+      border-left: 3px solid var(--gold);
+      padding-left: 12px;
+      margin: 18px 0
+    }
+
+    .phase textarea {
+      font-size: 13px;
+      min-height: 74px;
+      margin-top: 8px
+    }
+
+    .checkpoints {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .checkpoint {
+      border: 1px solid var(--line);
+      padding: 14px;
+      border-radius: 12px
+    }
+
+    .checkpoint input {
+      margin-top: 7px
+    }
+
+    .checkpoint textarea {
+      margin-top: 7px;
+      font-size: 12px;
+      min-height: 65px
+    }
+
+    .chart {
+      height: 110px;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      padding: 10px 5px 0;
+      margin-bottom: 30px
+    }
+
+    .bar {
+      flex: 1;
+      background: #e7ece3;
+      height: 100%;
+      position: relative;
+      border-radius: 6px 6px 0 0
+    }
+
+    .bar i {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: #79a18a;
+      border-radius: 6px 6px 0 0
+    }
+
+    .bar span {
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 11px
+    }
+
+    .bar b {
+      position: absolute;
+      top: 5px;
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      z-index: 1
+    }
+
+    a {
+      color: var(--green)
+    }
+
+    footer {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 25px 0
+    }
+
+    #status {
+      font-size: 12px;
+      color: var(--green)
+    }
+
+    .danger {
+      color: #a34d3f
+    }
+
+    details summary {
+      cursor: pointer
+    }
+
+    @media(max-width:850px) {
+      .wrap {
+        padding: 18px
+      }
+
+      .layout {
+        grid-template-columns: 1fr
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      header {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .hero {
+        padding: 22px
+      }
+
+      h1 {
+        font-size: 30px
+      }
+
+      .checkpoints {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .calendar {
+        gap: 6px
+      }
+
+      .day {
+        padding: 10px
+      }
+
+      .fields {
+        grid-template-columns: 1fr
+      }
+
+      .hero strong {
+        font-size: 28px
+      }
+    }
+
+    @media(max-width:420px) {
+      .checkpoints {
+        grid-template-columns: 1fr
+      }
+
+      .hero {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .heading {
+        flex-wrap: wrap
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="brand">LISTEN · UNDERSTAND · CONNECT</div>
+        <h1>sparrow in a bigger world</h1>
+        <div class="muted">12 周英语听力手账 / 每天 120 分钟 / 为真实课堂与生活做准备</div>
+      </div>
+      <div class="tools"><button id="export">导出备份</button><button id="import">导入 JSON</button><input id="file" type="file" accept="application/json,.json" hidden><button id="reset" class="danger">重置</button></div>
+    </header>
+    <section class="hero">
+      <div>
+        <h2>Keep going on</h2>
+        <p>先盲听，再精听；纠错之后跟读，最后用自己的话说出来。</p>
+      </div>
+      <div><strong>120</strong> 分钟 / 天<br><span>84 天，累计 168 小时</span></div>
+    </section>
+    <div class="stats">
+      <div class="stat"><small>完整完成</small><b id="daysStat">0 / 84 天</b></div>
+      <div class="stat"><small>已勾选训练时长</small><b id="timeStat">0 小时</b></div>
+      <div class="stat"><small>整体训练进度</small><b id="percentStat">0%</b></div>
+      <div class="stat"><small>最近一次盲听理解率</small><b id="rateStat">尚未记录</b></div>
+    </div>
+    <div class="layout">
+      <aside>
+        <section class="panel">
+          <h2>我的 84 天</h2><label class="field">计划开始日期<input type="date" id="start"></label>
+          <p class="muted" style="font-size:12px">更改开始日期会整体平移日期，记录仍按第几天保留。</p>
+          <div class="tools"><button id="today">跳到今天</button><button id="nextTodo">首个未完成日</button></div>
+          <div id="calendar"></div>
+          <p class="muted" style="font-size:12px">浅绿：完成 · 浅金：部分完成 · 边框：当前选择</p>
+        </section>
+        <section class="panel">
+          <h2>12 周阶段目标</h2><small>以下为可编辑的建议目标。关注自己的变化，不设保证达成的分数线。</small>
+          <div id="phases"></div>
+        </section>
+      </aside>
+      <main>
+        <section class="panel">
+          <div class="heading">
+            <div><small id="weekTitle"></small>
+              <h2 id="dayTitle" style="margin:3px 0"></h2><span class="date" id="dateTitle"></span>
+            </div>
+            <div class="tools"><button id="prev" aria-label="前一天">←</button><button id="next" aria-label="后一天">→</button></div>
+          </div>
+          <div id="dailySummary"></div>
+          <div class="progress"><i id="dailyBar"></i></div>
+          <div id="tasks"></div>
+          <div class="section">
+            <h3>听写问题分类</h3><small>勾选今天遇到的问题，在笔记中留下例句和正确读法。</small>
+            <div id="issues" class="chips"></div><label class="field">今日笔记 / 错句 / 新词 / 明日调整<textarea id="notes" placeholder="例如：知道这个词，但连读时没有辨认出来；记录音频时间点及纠正后的表达。"></textarea></label>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>每两周 · 首次盲听检查</h2>
+          <p class="muted">第 2、4、6、8、10、12 周末，各用一段<strong>从未听过</strong>的同类材料。只听一遍、不看字幕，用同一标准记录理解率：听懂的关键信息点 ÷ 总关键信息点 × 100%。记录后再核对文本。材料难度尽量接近；这不是标准化考试分数。</p>
+          <div class="chart" id="chart" aria-label="盲听理解率图表"></div>
+          <div class="checkpoints" id="checkpoints"></div>
+        </section>
+        <section class="panel">
+          <details>
+            <summary>训练方法与使用说明</summary>
+            <p>45 分钟听写是训练时长，不要求在一天内逐字听写整期约 20 分钟节目。选一小段：先盲听抓主旨，再分句暂停、重复、写下听到的内容；听不出的地方标记时间点。</p>
+            <p>纠错时区分“不认识词”和“认识但听不出”，核对文本后回听。跟读同一小段，关注重音、弱读、连读与语调。课堂/对话材料先听结构与信息点，复述尽量脱稿。五项完成后再勾选；统计按该项完整时长计算。</p>
+            <p>可在素材栏粘贴你已选好的节目或课堂链接；页面只接受 http/https 链接。记录保存在当前浏览器、当前文件地址的 localStorage 中；移动文件、换浏览器或清理浏览数据可能使记录不可见。请定期导出 JSON。导入会完整替换现有记录，系统会先询问确认。</p>
+          </details>
+        </section>
+      </main>
+    </div>
+    <footer><span id="status" role="status" aria-live="polite">正在准备本地记录…</span><br>你的记录留在这台设备上。本页无外部依赖，可离线使用。</footer>
+  </div>
+  <script>
+    'use strict';
+    const KEY = 'listening-journal-v1',
+      MIN = [45, 20, 20, 25, 10],
+      NAMES = ['The Intelligence 听写', '纠错与回听', '跟读与模仿', '大学课堂 / 自然对话', '英语复述'],
+      TIPS = ['选取可消化的片段，先盲听，再分句听写；不必逐字完成整期。', '核对文本，找出漏听原因，再关掉文本重听。', '使用今天的精听片段，模仿重音、弱读、连读和语调。', '先不看字幕，记录主旨、结构与关键信息；兼顾课堂和日常交流。', '脱稿概括今天内容，尽量用英语说满 10 分钟，可录音回看。'],
+      ISSUES = ['生词 / 短语', '连读 / 弱读', '语音辨识', '语速 / 切分', '语法结构', '背景知识', '注意力 / 工作记忆'],
+      GOALS = ['第 1—2 周｜建立流程：缩短听写片段，找出主要漏听原因，形成每日记录习惯。', '第 3—4 周｜提升辨音：集中回听高频错句，逐步识别连读、弱读和重音。', '第 5—6 周｜抓住结构：听出主旨、转折与论据，能用英语概括核心信息。', '第 7—8 周｜适应课堂：练习边听边记提纲，接触自然对话中的停顿与口音。', '第 9—10 周｜拓宽迁移：接触不同说话者和学科，减少对字幕与逐词翻译的依赖。', '第 11—12 周｜模拟留学：连贯听课、整理笔记并口头复述，复盘下一阶段重点。'];
+    const $ = id => document.getElementById(id);
+    let selected = 0,
+      storageOK = true;
+
+    function dateStr(d) {
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0')
+    }
+
+    function blank() {
+      return {
+        version: 1,
+        start: dateStr(new Date()),
+        days: Array.from({
+          length: 84
+        }, () => ({
+          done: [false, false, false, false, false],
+          materials: Array.from({
+            length: 5
+          }, () => ({
+            name: '',
+            url: ''
+          })),
+          issues: [],
+          notes: ''
+        })),
+        phases: [...GOALS],
+        checks: Array.from({
+          length: 6
+        }, () => ({
+          date: '',
+          rate: '',
+          name: '',
+          url: '',
+          notes: ''
+        }))
+      }
+    }
+
+    function validDate(x) {
+      if (typeof x !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(x)) return false;
+      let d = new Date(x + 'T12:00:00');
+      return !isNaN(d) && dateStr(d) === x
+    }
+
+    function validate(s) {
+      const str = x => typeof x === 'string',
+        mat = m => m && str(m.name) && str(m.url);
+      if (!s || s.version !== 1 || !validDate(s.start) || !Array.isArray(s.days) || s.days.length !== 84 || !Array.isArray(s.phases) || s.phases.length !== 6 || !s.phases.every(str) || !Array.isArray(s.checks) || s.checks.length !== 6) throw Error('备份结构或版本不正确');
+      if (!s.days.every(d => d && Array.isArray(d.done) && d.done.length === 5 && d.done.every(x => typeof x === 'boolean') && Array.isArray(d.materials) && d.materials.length === 5 && d.materials.every(mat) && Array.isArray(d.issues) && d.issues.every(x => ISSUES.includes(x)) && str(d.notes))) throw Error('每日记录格式不正确');
+      if (!s.checks.every(c => c && str(c.date) && (c.date === '' || validDate(c.date)) && (c.rate === '' || (typeof c.rate === 'number' && Number.isFinite(c.rate) && c.rate >= 0 && c.rate <= 100)) && mat(c) && str(c.notes))) throw Error('盲听记录格式不正确');
+      return s
+    }
+    let state = blank();
+    try {
+      let raw = localStorage.getItem(KEY);
+      if (raw) state = validate(JSON.parse(raw))
+    } catch (e) {
+      storageOK = false;
+      $('status').textContent = '无法读取本地记录：' + e.message + '。可导出当前记录；重置前请保留原备份。'
+    }
+
+    function save() {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+        storageOK = true;
+        $('status').textContent = '已自动保存 · ' + new Date().toLocaleTimeString('zh-CN')
+      } catch (e) {
+        storageOK = false;
+        $('status').textContent = '自动保存失败（浏览器限制或空间不足），请立即导出 JSON 备份。'
+      }
+    }
+
+    function dayDate(i) {
+      let d = new Date(state.start + 'T12:00:00');
+      d.setDate(d.getDate() + i);
+      return d
+    }
+
+    function minutes(d) {
+      return d.done.reduce((a, x, i) => a + (x ? MIN[i] : 0), 0)
+    }
+
+    function link(url, el) {
+      el.replaceChildren();
+      try {
+        let u = new URL(url);
+        if (!['https:', 'http:'].includes(u.protocol)) return;
+        let a = document.createElement('a');
+        a.href = u.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = '打开素材 ↗';
+        el.append(a)
+      } catch {}
+    }
+
+    function field(label, value, type, fn) {
+      let l = document.createElement('label');
+      l.className = 'field';
+      l.textContent = label;
+      let e = document.createElement(type === 'textarea' ? 'textarea' : 'input');
+      if (type !== 'textarea') e.type = type;
+      e.value = value;
+      l.append(e);
+      e.addEventListener('input', () => fn(e.value, e));
+      return [l, e]
+    }
+
+    function stats() {
+      let count = state.days.filter(d => d.done.every(Boolean)).length,
+        total = state.days.reduce((s, d) => s + minutes(d), 0);
+      $('daysStat').textContent = count + ' / 84 天';
+      $('timeStat').textContent = (total / 60).toFixed(1) + ' 小时';
+      $('percentStat').textContent = Math.round(total / 10080 * 100) + '%';
+      let recent = state.checks.map((c, i) => ({
+        ...c,
+        i
+      })).filter(c => c.rate !== '').sort((a, b) => (a.date || dateStr(dayDate((a.i + 1) * 14 - 1))).localeCompare(b.date || dateStr(dayDate((b.i + 1) * 14 - 1))));
+      $('rateStat').textContent = recent.length ? recent.at(-1).rate + '%' : '尚未记录';
+      $('calendar').replaceChildren();
+      for (let w = 0; w < 12; w++) {
+        let label = document.createElement('div');
+        label.className = 'week-label';
+        label.textContent = 'WEEK ' + String(w + 1).padStart(2, '0');
+        $('calendar').append(label);
+        let grid = document.createElement('div');
+        grid.className = 'calendar';
+        for (let j = 0; j < 7; j++) {
+          let i = w * 7 + j,
+            b = document.createElement('button'),
+            m = minutes(state.days[i]);
+          b.className = 'day' + (m === 120 ? ' done' : m ? ' partial' : '') + (i === selected ? ' selected' : '');
+          b.textContent = i + 1;
+          b.title = dateStr(dayDate(i)) + ' · ' + m + '/120 分钟';
+          b.setAttribute('aria-label', '第 ' + (i + 1) + ' 天，' + b.title);
+          b.setAttribute('aria-pressed', String(i === selected));
+          b.onclick = () => {
+            selected = i;
+            renderDay();
+            stats()
+          };
+          grid.append(b)
+        }
+        $('calendar').append(grid)
+      }
+      let m = minutes(state.days[selected]);
+      $('dailySummary').textContent = '今日已完成 ' + state.days[selected].done.filter(Boolean).length + ' / 5 项 · ' + m + ' / 120 分钟';
+      $('dailyBar').style.width = (m / 120 * 100) + '%'
+    }
+
+    function renderDay() {
+      let d = state.days[selected];
+      $('weekTitle').textContent = 'WEEK ' + (Math.floor(selected / 7) + 1) + ' · DAY ' + (selected % 7 + 1);
+      $('dayTitle').textContent = '第 ' + (selected + 1) + ' 天的练习';
+      $('dateTitle').textContent = dayDate(selected).toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long'
+      });
+      $('prev').disabled = selected === 0;
+      $('next').disabled = selected === 83;
+      $('tasks').replaceChildren();
+      NAMES.forEach((name, i) => {
+        let box = document.createElement('div');
+        box.className = 'task';
+        let head = document.createElement('div');
+        head.className = 'task-head';
+        let cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.id = 'task' + i;
+        cb.checked = d.done[i];
+        cb.onchange = () => {
+          d.done[i] = cb.checked;
+          save();
+          stats()
+        };
+        let lab = document.createElement('label');
+        lab.htmlFor = cb.id;
+        lab.textContent = name;
+        let min = document.createElement('span');
+        min.className = 'minutes';
+        min.textContent = MIN[i] + ' 分钟';
+        head.append(cb, lab, min);
+        let p = document.createElement('p');
+        p.textContent = TIPS[i];
+        let fs = document.createElement('div');
+        fs.className = 'fields';
+        let open = document.createElement('small');
+        let [nf] = field('素材名称 / 片段时间', d.materials[i].name, 'text', v => {
+          d.materials[i].name = v;
+          save()
+        });
+        let [uf] = field('素材链接（可选）', d.materials[i].url, 'url', v => {
+          d.materials[i].url = v;
+          link(v, open);
+          save()
+        });
+        link(d.materials[i].url, open);
+        fs.append(nf, uf, open);
+        box.append(head, p, fs);
+        $('tasks').append(box)
+      });
+      $('issues').replaceChildren();
+      ISSUES.forEach(name => {
+        let l = document.createElement('label'),
+          c = document.createElement('input');
+        c.type = 'checkbox';
+        c.checked = d.issues.includes(name);
+        c.onchange = () => {
+          d.issues = c.checked ? [...d.issues, name] : d.issues.filter(x => x !== name);
+          save()
+        };
+        l.append(c, document.createTextNode(' ' + name));
+        $('issues').append(l)
+      });
+      $('notes').value = d.notes;
+      stats()
+    }
+
+    function chart() {
+      $('chart').replaceChildren();
+      state.checks.forEach((c, i) => {
+        let bar = document.createElement('div');
+        bar.className = 'bar';
+        let fill = document.createElement('i');
+        fill.style.height = (c.rate === '' ? 0 : c.rate) + '%';
+        let val = document.createElement('b');
+        val.textContent = c.rate === '' ? '—' : c.rate + '%';
+        let label = document.createElement('span');
+        label.textContent = '第 ' + ((i + 1) * 2) + ' 周';
+        bar.append(fill, val, label);
+        $('chart').append(bar)
+      });
+      stats()
+    }
+
+    function renderExtras() {
+      $('start').value = state.start;
+      $('phases').replaceChildren();
+      state.phases.forEach((v, i) => {
+        let p = document.createElement('div');
+        p.className = 'phase';
+        let [f] = field('阶段 ' + (i + 1), v, 'textarea', v => {
+          state.phases[i] = v;
+          save()
+        });
+        p.append(f);
+        $('phases').append(p)
+      });
+      $('checkpoints').replaceChildren();
+      state.checks.forEach((c, i) => {
+        let box = document.createElement('div');
+        box.className = 'checkpoint';
+        let h = document.createElement('h3');
+        h.textContent = '第 ' + ((i + 1) * 2) + ' 周末';
+        let small = document.createElement('small');
+        small.textContent = '计划 ' + dateStr(dayDate((i + 1) * 14 - 1));
+        box.append(h, small);
+        [
+          ['测试日期', 'date', 'date'],
+          ['首次理解率（0—100%）', 'rate', 'number'],
+          ['全新素材名称', 'name', 'text'],
+          ['素材链接', 'url', 'url'],
+          ['关键信息点 / 测试备注', 'notes', 'textarea']
+        ].forEach(([label, k, type]) => {
+          let [f, e] = field(label, c[k], type, (v, input) => {
+            if (k === 'rate') {
+              if (v !== '' && (!Number.isFinite(Number(v)) || Number(v) < 0 || Number(v) > 100)) {
+                input.setCustomValidity('请输入 0 到 100');
+                input.reportValidity();
+                return
+              }
+              input.setCustomValidity('');
+              c[k] = v === '' ? '' : Number(v);
+              chart()
+            } else {
+              c[k] = v;
+              if (k === 'url') link(v, open)
+            }
+            save()
+          });
+          if (k === 'rate') {
+            e.min = 0;
+            e.max = 100;
+            e.step = 'any'
+          }
+          box.append(f)
+        });
+        let open = document.createElement('small');
+        link(c.url, open);
+        box.append(open);
+        $('checkpoints').append(box)
+      });
+      chart()
+    }
+    $('notes').oninput = () => {
+      state.days[selected].notes = $('notes').value;
+      save()
+    };
+    $('start').onchange = () => {
+      if (!validDate($('start').value)) {
+        $('start').value = state.start;
+        return
+      }
+      state.start = $('start').value;
+      save();
+      renderDay();
+      renderExtras()
+    };
+    $('prev').onclick = () => {
+      if (selected > 0) {
+        selected--;
+        renderDay()
+      }
+    };
+    $('next').onclick = () => {
+      if (selected < 83) {
+        selected++;
+        renderDay()
+      }
+    };
+    $('today').onclick = () => {
+      let today = dateStr(new Date()),
+        i = state.days.findIndex((_, i) => dateStr(dayDate(i)) === today);
+      if (i < 0) {
+        alert('今天不在计划日期范围内，可调整开始日期。');
+        return
+      }
+      selected = i;
+      renderDay()
+    };
+    $('nextTodo').onclick = () => {
+      let i = state.days.findIndex(d => !d.done.every(Boolean));
+      if (i < 0) {
+        alert('84 天已经全部完成！');
+        return
+      }
+      selected = i;
+      renderDay()
+    };
+    $('export').onclick = () => {
+      let blob = new Blob([JSON.stringify(state, null, 2)], {
+          type: 'application/json;charset=utf-8'
+        }),
+        url = URL.createObjectURL(blob),
+        a = document.createElement('a');
+      a.href = url;
+      a.download = '英语听力备份-' + dateStr(new Date()) + '.json';
+      document.body.append(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+    };
+    $('import').onclick = () => $('file').click();
+    $('file').onchange = async () => {
+      let f = $('file').files[0];
+      if (!f) return;
+      try {
+        if (f.size > 10000000) throw Error('文件过大，请使用本页导出的 JSON 备份');
+        let parsed = validate(JSON.parse(await f.text()));
+        if (!confirm('导入将替换所有现有记录。建议先导出当前备份。确认导入？')) return;
+        state = parsed;
+        selected = 0;
+        save();
+        renderDay();
+        renderExtras();
+        alert(storageOK ? '备份已导入并保存。' : '备份已导入，但本地保存失败，请导出保留。')
+      } catch (e) {
+        alert('导入失败：' + e.message + '。原有记录未更改。')
+      } finally {
+        $('file').value = ''
+      }
+    };
+    $('reset').onclick = () => {
+      if (!confirm('重置将清空全部 84 天记录、盲听检查和自定义目标。建议先导出备份。确认继续？')) return;
+      if (prompt('请输入“重置”以确认清空：') !== '重置') return;
+      state = blank();
+      selected = 0;
+      save();
+      renderDay();
+      renderExtras()
+    };
+    renderDay();
+    renderExtras();
+    if (storageOK) $('status').textContent = '本地记录已就绪 · 修改后自动保存';
+  </script>
+</body>
+
+</html>
